@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoRE Lab — UC Berkeley</title>
+<meta name="description" content="CoRE Lab at UC Berkeley — research and resources for learning with data, computing, science, and technology.">
+<style>
+:root{
+  --blue:#003262;
+  --gold:#fdb515;
+  --ink:#17202a;
+  --muted:#5d6873;
+  --cream:#f7f5ef;
+  --line:#dfe3e7;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,92%);margin:auto}
+.topbar{height:8px;background:linear-gradient(90deg,var(--blue) 0 72%,var(--gold) 72% 100%)}
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:20}
+.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{display:flex;align-items:center;gap:13px;font-weight:800;color:var(--blue)}
+.logo-mark{width:42px;height:42px;border:5px solid var(--blue);border-radius:50%;position:relative}
+.logo-mark:after{content:"";position:absolute;width:13px;height:13px;background:var(--gold);border-radius:50%;right:-5px;bottom:-5px;border:3px solid white}
+.logo small{display:block;color:#68737d;font-weight:500;font-size:11px;letter-spacing:1px}
+.logo strong{font-size:21px;letter-spacing:.5px}
+nav{display:flex;gap:25px;align-items:center}
+nav a{font-size:14px;font-weight:700;color:#39434d}
+nav a:hover{color:var(--blue)}
+.menu{display:none;border:0;background:none;font-size:25px}
+.hero{background:var(--cream);padding:95px 0 90px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:65px;align-items:center}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--blue);font-weight:800}
+h1{font-size:clamp(42px,6vw,76px);line-height:1.02;margin:15px 0 25px;color:var(--blue);letter-spacing:-2px}
+.hero p{font-size:19px;max-width:650px;color:#46515b}
+.buttons{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 20px;border-radius:4px;font-weight:800;border:2px solid var(--blue);display:inline-block}
+.btn.primary{background:var(--blue);color:white}
+.btn.secondary{background:white;color:var(--blue)}
+.hero-art{min-height:380px;position:relative}
+.circle{position:absolute;border-radius:50%}
+.c1{width:270px;height:270px;background:var(--blue);right:15px;top:30px}
+.c2{width:155px;height:155px;background:var(--gold);right:180px;top:155px}
+.c3{width:95px;height:95px;background:#8cc63f;left:40px;bottom:15px}
+.grid-art{position:absolute;inset:35px 20px 10px 30px;background-image:linear-gradient(rgba(0,50,98,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(0,50,98,.11) 1px,transparent 1px);background-size:32px 32px;transform:rotate(-7deg);border-radius:12px}
+section{padding:82px 0}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:35px}
+.section-head h2{font-size:38px;line-height:1.1;margin:0;color:var(--blue)}
+.section-head p{max-width:580px;color:var(--muted);margin:0}
+.about{background:white}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{border:1px solid var(--line);padding:28px;background:white;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.card .num{font-size:13px;font-weight:800;color:var(--gold)}
+.card h3{font-size:23px;color:var(--blue);margin:10px 0}
+.card p{color:var(--muted);font-size:15px}
+.card a{font-weight:800;color:var(--blue)}
+.band{background:var(--blue);color:white}
+.band .section-head h2{color:white}
+.band .section-head p{color:#d8e2eb}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{border:1px solid rgba(255,255,255,.2);padding:26px;background:rgba(255,255,255,.05)}
+.project h3{margin:0 0 8px;font-size:22px}
+.project p{color:#d6e0e9;margin:0}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news{border-top:5px solid var(--gold);padding:24px;background:#fafafa}
+.news .date{font-size:12px;color:#69747e;text-transform:uppercase;font-weight:800;letter-spacing:1px}
+.news h3{color:var(--blue);font-size:21px;line-height:1.25}
+.news p{color:var(--muted);font-size:14px}
+.resources{background:var(--cream)}
+.resource-list{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.resource{background:white;border:1px solid var(--line);padding:20px;display:flex;justify-content:space-between;gap:20px}
+.resource strong{color:var(--blue)}
+.resource span{font-weight:800;color:var(--gold)}
+.cta{background:var(--gold);padding:65px 0}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}
+.cta h2{font-size:38px;color:var(--blue);margin:0}
+footer{background:#111d27;color:#d7e0e7;padding:48px 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+footer h3{color:white;margin-top:0}
+footer a{display:block;color:#c8d3dc;margin:7px 0;font-size:14px}
+.copyright{border-top:1px solid #34414b;margin-top:35px;padding-top:22px;font-size:13px;color:#9ba8b2}
+@media(max-width:800px){
+ nav{display:none}.menu{display:block}
+ .hero-grid{grid-template-columns:1fr}.hero-art{min-height:280px}
+ .cards,.news-grid{grid-template-columns:1fr}
+ .project-grid,.resource-list{grid-template-columns:1fr}
+ .section-head,.cta-inner{display:block}.section-head p{margin-top:15px}
+ .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">
+      <span class="logo-mark"></span>
+      <span><strong>CoRE Lab</strong><small>UC BERKELEY</small></span>
+    </a>
+    <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#resources">Resources</a>
+      <a href="#news">News</a>
+      <a href="#people">People</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Computing • Research • Education</div>
+      <h1>Learning with data, computing &amp; science.</h1>
+      <p>CoRE Lab brings together researchers, educators, and learners to investigate how computational tools, data, and scientific practices can support meaningful learning.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">Explore our work</a>
+        <a class="btn secondary" href="#resources">View resources</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="grid-art"></div>
+      <div class="circle c1"></div><div class="circle c2"></div><div class="circle c3"></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>What we do</h2>
+      <p>Our work explores the connections among computing, data, science, curriculum, and the people who use these tools in real learning environments.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="num">01</div><h3>Research</h3><p>We study how learners and teachers reason with data, computational models, visualizations, and digital tools.</p><a href="#projects">Research areas →</a></article>
+      <article class="card"><div class="num">02</div><h3>Curriculum</h3><p>We develop learning experiences and practical materials that connect classroom goals with authentic data and scientific questions.</p><a href="#resources">Teaching resources →</a></article>
+      <article class="card"><div class="num">03</div><h3>Community</h3><p>We collaborate with educators, researchers, schools, and communities to make learning more relevant and equitable.</p><a href="#people">Meet the team →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="band">
+  <div class="container">
+    <div class="section-head">
+      <h2>Selected projects</h2>
+      <p>CoRE Lab projects span data science education, computational modeling, climate learning, and critical digital literacies.</p>
+    </div>
+    <div class="project-grid">
+      <article class="project"><h3>Writing Data Stories</h3><p>Supporting learners in interpreting and communicating stories told through data, with attention to mathematical, scientific, personal, and social perspectives.</p></article>
+      <article class="project"><h3>MoDa / Agent-Based Modeling</h3><p>Exploring how students build, test, and refine computational models to reason about scientific mechanisms and real-world systems.</p></article>
+      <article class="project"><h3>Rivulet</h3><p>Tools and frameworks for helping educators find and customize pedagogically generative scientific datasets.</p></article>
+      <article class="project"><h3>Computing as Multiliteracies</h3><p>Investigating computing and digital practices as forms of literacy that can support richer participation in learning.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="resources" class="resources">
+  <div class="container">
+    <div class="section-head">
+      <h2>Resources</h2>
+      <p>Explore classroom-ready materials and guides developed through CoRE Lab research and collaborations.</p>
+    </div>
+    <div class="resource-list">
+      <a class="resource" href="#"><strong>Custom datasets for teaching</strong><span>↗</span></a>
+      <a class="resource" href="#"><strong>DataBytes lessons</strong><span>↗</span></a>
+      <a class="resource" href="#"><strong>Learning with Jupyter</strong><span>↗</span></a>
+      <a class="resource" href="#"><strong>Agent-based modeling materials</strong><span>↗</span></a>
+      <a class="resource" href="#"><strong>Data visualization activities</strong><span>↗</span></a>
+      <a class="resource" href="#"><strong>Teacher guides &amp; curriculum tools</strong><span>↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="container">
+    <div class="section-head">
+      <h2>Latest news</h2>
+      <p>Recent updates, presentations, publications, and work from the lab.</p>
+    </div>
+    <div class="news-grid">
+      <article class="news"><div class="date">February 18, 2026</div><h3>CoRE Lab at ISLS ’26</h3><p>Sharing tools and findings from current projects at the 2026 Annual Meeting of the International Society for the Learning Sciences.</p></article>
+      <article class="news"><div class="date">December 18, 2025</div><h3>Choosy in Teaching Statistics</h3><p>Strategies for making large datasets manageable while maintaining alignment with statistical learning goals.</p></article>
+      <article class="news"><div class="date">July 31, 2025</div><h3>Mapping Data Science Education Literature</h3><p>A science-mapping analysis examining clusters in data science education research.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="people" class="band">
+  <div class="container">
+    <div class="section-head">
+      <h2>People</h2>
+      <p>Researchers, students, educators, and collaborators contribute diverse perspectives to CoRE Lab projects.</p>
+    </div>
+    <div class="project-grid">
+      <div class="project"><h3>Researchers &amp; students</h3><p>Explore current and former members, their research interests, and project connections.</p></div>
+      <div class="project"><h3>Collaborators</h3><p>Our work is strengthened through partnerships across education, computer science, science learning, and community organizations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container cta-inner">
+    <h2>Explore the work of CoRE Lab.</h2>
+    <a class="btn primary" href="#resources">Browse resources</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><h3>CoRE Lab</h3><p>Researching learning at the intersection of computing, data, science, and education.</p></div>
+    <div><h3>Explore</h3><a href="#about">About</a><a href="#projects">Projects</a><a href="#resources">Resources</a></div>
+    <div><h3>Connect</h3><a href="#news">News</a><a href="#people">People</a><a href="https://corelab.berkeley.edu/" target="_blank" rel="noopener">Original site</a></div>
+  </div>
+  <div class="container copyright">© 2026 CoRE Lab — UC Berkeley. This page is a standalone front-end recreation/concept based on publicly available site information.</div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const n=document.getElementById('nav');
+  const open=n.style.display==='flex';
+  n.style.display=open?'none':'flex';
+  n.style.flexDirection='column';
+  n.style.position='absolute';
+  n.style.top='90px';
+  n.style.right='4%';
+  n.style.background='white';
+  n.style.padding='20px';
+  n.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';
+}
+</script>
+</body>
+</html>
